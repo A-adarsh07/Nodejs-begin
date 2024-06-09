@@ -8,7 +8,7 @@ console.log(__filename);
 const fs2= require("fs").writeFileSync;
 fs2("txt1","we can also write this");
 
- const data = require('./data');
+ const data = require('./data');  //importing data from data.js file
 const http = require('http');
 http.createServer((req,resp) => {
     resp.writeHead(200,{'Content-Type':'application\json'} )
