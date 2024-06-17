@@ -50,3 +50,11 @@ fs.unlink('hello.txt',function(err){
     if(err) console.log(err);
     else console.log('removed');
 })
+
+// read file names
+
+fs.readdir(dirpath,(err,files) =>{
+files.forEach((item) =>{
+console.log("file name is " , item)
+})
+})
