@@ -22,6 +22,23 @@ app.get('/help',(req,resp)=>{
     resp.sendFile(`${publicpath}/help.html`);
 })
 
+
+
+// EJS template 
+app.set('view engine','ejs'); 
+// now create a folder name = views , and create a ejs file 
+
+app.get('/ejs',(req,resp)=>{
+    const user= {
+        name:'Charlie Adarsh',
+        email:'charlie.adarsh@gmail.com',
+        city:'Haridwar'
+    }
+    resp.render('template',{user});
+});
+
+
+// ERROR 404 PAGE
 app.get('*',(req,resp) => {
     resp.sendFile(`${publicpath}/404.html`);
 })
@@ -29,4 +46,3 @@ app.get('*',(req,resp) => {
 app.listen(5000,() => {
     console.log('server running on port 5000');
 });
-
