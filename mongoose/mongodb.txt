@@ -1,6 +1,6 @@
 install mongodb community in windows , then install mongodb shell to run queries
 
-show dbs 
+show dbs    - show all databases
 use data_db    // it'll use data_db or if it not there it'll create it 
 
 db.students.insertOne({name:"Ram", age:12}) // this will create a collection if it is not there and also insert a student as document
@@ -27,7 +27,6 @@ but findOne method just return the record or data .
 db.students.find().count()   - total count 
 db.students.find().forEach((x) => {})   - foreach method
 db.students.find({age:{$lte:12}}) - less than or equal
-db.students.find({age:{$lte:12}}).count() -   count the no.
 db.students.find({age:{$lte:12}}).count() -   count the no.
 
 db.students.find({age:{$gt:5,$lt:12}})    - used limit
