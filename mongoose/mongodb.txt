@@ -1,0 +1,37 @@
+install mongodb community in windows , then install mongodb shell to run queries
+
+show dbs 
+use data_db    // it'll use data_db or if it not there it'll create it 
+
+db.students.insertOne({name:"Ram", age:12}) // this will create a collection if it is not there and also insert a student as document
+
+db.students.insertOne({name:"shyam",age:14})
+
+***** CRUD OPERATIONS
+
+create - insertOne and insertMany
+Read - find(filter,options) ,findOne(filter,options);
+update - updateOne(filter,data,options) , updateMany(f,d,o), replaceOne(f,d,options)
+delete - deleteOne(filterOne,options), deleteMany(f,o)
+
+
+*****  Read 
+db.students.find()    - to see all data/elements  - around 20 - use 'it' to see more
+db.students.find({age:11})  - filter
+db.students.findOne({age:11})  - filter only one - based on order
+
+db.student.find vs db.student.findOne 
+find method return the cursor , which can be use to filter more things and to do more things like limit, forEach(),count 
+but findOne method just return the record or data .
+
+db.students.find().count()   - total count 
+db.students.find().forEach((x) => {})   - foreach method
+db.students.find({age:{$lte:12}}) - less than or equal
+db.students.find({age:{$lte:12}}).count() -   count the no.
+db.students.find({age:{$lte:12}}).count() -   count the no.
+
+db.students.find({age:{$gt:5,$lt:12}})    - used limit
+
+db.students.find().toArray()   - list out all the elements 
+
+
