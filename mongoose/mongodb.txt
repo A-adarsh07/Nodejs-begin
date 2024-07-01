@@ -33,4 +33,13 @@ db.students.find({age:{$gt:5,$lt:12}})    - used limit
 
 db.students.find().toArray()   - list out all the elements 
 
+**********   **********
 
+show databases; or show dbs;
+use <database-name>
+db.createCollection("users");
+show collections
+db.users.insertOne({id :1 , username:'charlie', age:22});
+db.users.find();  - will show all the data inside the collection
+db.users.updateOne({username:'charlie'}, {$set: {id :3} });
+db.users.deleteOne({id:2});
