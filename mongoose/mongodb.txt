@@ -43,3 +43,5 @@ db.users.insertOne({id :1 , username:'charlie', age:22});
 db.users.find();  - will show all the data inside the collection
 db.users.updateOne({username:'charlie'}, {$set: {id :3} });
 db.users.deleteOne({id:2});
+db.users.updateOne({username:'charlie'},{$set:{job:'cloud engineer'}})
+
