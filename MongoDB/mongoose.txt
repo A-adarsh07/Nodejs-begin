@@ -1,0 +1,15 @@
+Now we are going to use mongoose rather than mongodb
+Mongoose is an Object Data Modelling(ODM) library for MongoDB and Node.js 
+Mongoose is like a translator between your Nodejs code and MongoDB . It makes working with the database smoother and easier
+
+Mongoose as a driver is better than a native official driver -mongodb
+
+Mongoose helps you make sure the data you put into the database is correct. Its like having someone check if you've written your email address correctly before sending a message.
+very easy to query from the databases
+
+
+install mongoose library using npm 
+npm i mongoose
+
+import Mongoose and define the MongoDB URL - in the db.js file ,first import the mongoose library and 
+define the URL to your MongoDB database.
