@@ -13,3 +13,24 @@ npm i mongoose
 
 import Mongoose and define the MongoDB URL - in the db.js file ,first import the mongoose library and 
 define the URL to your MongoDB database.
+
+What are models or schema ??
+Models are like a blueprint of our database 
+Mongoose allows you to define a schema for your documents. A schema is like a blueprint that defines the structure andd data types of our documents within a collection.
+
+ex. {
+    "name" :"ALice",
+    "age" : 23,
+    "work" : "chef",
+    "mobile" :"123-456-4342",
+    "salary" :60000
+}
+
+    INSTALL BODY-parser
+        npm i body-parser
+***  WHat is body-parser ??
+BodyParser is a middleware library for Express.js . It is used to parse and extract the body of incoming HTTP requests .
+when a client sends data to a server , it typically includes that data in the body of an HTTP request.
+
+BodyParser.json() automatically parses the json data from the request body and converts into a javascript object , which is then stored in the req.body
+express js uses this as middleware 
