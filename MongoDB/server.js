@@ -6,7 +6,7 @@ const bodyparser = require('body-parser');
 app.use(bodyparser.json()); 
  
 
-const person= require('./Models/person');  //models -schema
+const person= require('./Models/personSchema');  //models -schema
 
 
 

@@ -7,7 +7,7 @@ mongoose.connect(mongoURL, {
     useUnifiedTopology:true
 
 })
-const db = mongoose.connection;  //Mongoose maintains a default connection object representing the MongoDB coneection
+const db = mongoose.connection;  //Mongoose maintains a default connection object representing the MongoDB connection
 
 // Define event listeners for databases connection
 
