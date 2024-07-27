@@ -31,8 +31,20 @@ res.status(200).json(response);
         console.log(error);
         res.status(500).json({error: 'Internal server errror'});
     }
-  
+})
 
+    // GET Method to get the person data  from database
+     app.get('/person',async(req,res) => {
+        try {
+            const reqData =await Person.find();
+            console.log('data fetched successfully ');
+            res.status(200).json(reqData);
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({error: 'Internal server errror'});
+
+        }
+     })
 // Save the new person to the database
 // newPerson.save((error,savedPerson) =>{
 //     if(error) {
@@ -43,7 +55,6 @@ res.status(200).json(response);
 //         res.status(200).json({savedPerson});
 //     }
 //     })     This callback method is old and not good also not longer used , we'll use try,catchand block method 
-})
 
 
 
