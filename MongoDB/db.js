@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const mongoURL= 'mongodb://localhost:27017'
+const mongoURL= 'mongodb://localhost:27017/hotels'  //Replace 'hotels' with yur databse
 
 // Set up MongoDB connection
 mongoose.connect(mongoURL, {
@@ -24,3 +24,5 @@ db.on('disconnected',() =>{
 
 // export the db object - export the database connection . 
 module.exports= db;
+
+// db.js file act as a central Module that manages the connection to your MongoDB database using Mongoose. It sets up the connection , handles connection events and exports the connection object to interact with the database. 
