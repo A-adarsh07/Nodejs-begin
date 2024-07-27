@@ -9,6 +9,7 @@ console.log(publicpath);
 
 
 // app.use(express.static(publicpath));
+
 // This is a built-in middleware function in Express. It serves static files and is based on serve-static.
 
 // Render multiple html files without url
