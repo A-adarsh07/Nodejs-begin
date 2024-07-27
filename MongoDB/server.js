@@ -11,22 +11,41 @@ app.use(bodyparser.json());
 const Person= require('./Models/personSchema');  //models -schema
 
 //POST route to addd the person data
-app.post('/person',(req,res)=>{
-    const data = req.body //   data is processing through body parser and store inside req.body 
+app.post('/person',async(req,res)=>{
+    try {
+        const data = req.body //   data is processing through body parser and store inside req.body 
 
     //Create a new Person Document using the Mongoose model 
-    const newPerson = new Person();
-    newPerson.name = data.name;
-    newPerson.age= data.age;
-    newPerson.work=data.work;
-    newPerson.mobile= data.mobile;
-    newPerson.email=data.email;
-    newPerson.salary=data.salary;
+    const newPerson = new Person(data);   
+ // To prevent this lengthy approach , we'll put 'data' inside the 'new Person(data)' so that we get every data we need
+    // newPerson.name = data.name;
+    // newPerson.age= data.age;
+
+// save the new person to the database
+const response = await newPerson.save();
+console.log('data saved');
+res.status(200).json(response);
 
 
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({error: 'Internal server errror'});
+    }
+  
 
-
+// Save the new person to the database
+// newPerson.save((error,savedPerson) =>{
+//     if(error) {
+//         console.log('error saving person:', error);
+//         res.status(500).json({error:'Internal server error'});
+//     } else{
+//         console.log('data saved successfully');
+//         res.status(200).json({savedPerson});
+//     }
+//     })     This callback method is old and not good also not longer used , we'll use try,catchand block method 
 })
+
+
 
 app.get('/',function(req,res){
     res.send('welcome to the restaurant');
