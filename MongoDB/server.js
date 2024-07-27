@@ -8,6 +8,7 @@ const bodyparser = require("body-parser");
 app.use(bodyparser.json());
 
 const Person = require("./Models/personSchema"); //models -schema
+const MenuItem = require('./Models/menu');  // create GET & POST  for this 
 
 //POST route to addd the person data
 app.post("/person", async (req, res) => {
