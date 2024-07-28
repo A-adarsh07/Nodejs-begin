@@ -34,3 +34,8 @@ when a client sends data to a server , it typically includes that data in the bo
 
 BodyParser.json() automatically parses the json data from the request body and converts into a javascript object , which is then stored in the req.body
 express js uses this as middleware 
+
+
+After that use 'Models' for different databases , create GET/POST method 
+
+but we shouldn't use this method of creating GET/POST in Server.js file , it'll be difficult later, so we'll use Express-Routing method 

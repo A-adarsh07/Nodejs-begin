@@ -8,7 +8,7 @@ const bodyparser = require("body-parser");
 app.use(bodyparser.json());
 
 const Person = require("./Models/personSchema"); //models -schema
-const MenuItem = require('./Models/menu');  // create GET & POST  for this 
+const MenuItem = require("./Models/menu"); // create GET & POST  for this
 
 //POST route to addd the person data
 app.post("/person", async (req, res) => {
@@ -32,53 +32,60 @@ app.post("/person", async (req, res) => {
 });
 
 // GET Method to get the person data  from database
-            app.get("/person", async (req, res) => {
-            try {
-                const reqData = await Person.find();
-                console.log("data fetched successfully ");
-                res.status(200).json(reqData);
-            } catch (error) {
-                console.log(error);
-                res.status(500).json({ error: "Internal server errror" });
-            }
-});
-// Save the new person to the database
-// newPerson.save((error,savedPerson) =>{
-//     if(error) {
-//         console.log('error saving person:', error);
-//         res.status(500).json({error:'Internal server error'});
-//     } else{
-//         console.log('data saved successfully');
-//         res.status(200).json({savedPerson});
-//     }
-//     })     This callback method is old and not good also not longer used , we'll use try,catchand block method
-
-app.post('/menuitem',async(req,res) => {
-    try {
-        const menudata = req.body;
-        const newmenu = new MenuItem(menudata);  //take the name from above where assigned the value
-        const response = await newmenu.save();
-        console.log('Menu items added successfully ');
-        res.status(200).json(response);
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({error:'internal server error - Menu '});
-    }
+app.get("/person", async (req, res) => {
+  try {
+    const reqData = await Person.find();
+    console.log("data fetched successfully ");
+    res.status(200).json(reqData);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal server errror" });
+  }
 });
 
-app.get('/menuitem', async(req,res) => {
+app.get('/person/:worktype', async(req,res)=>{
     try {
-        const reqitem = await MenuItem.find();
+        const worktype = req.params.worktype; //Extract the work type from the URL parameter
+        if(worktype =='chef' || worktype =='manager' || worktype =='waiter'){
+            const response = await Person.find({work:worktype});
+            console.log('resoponse fetched');
+            res.status(200).json(response);
+         } else {
+            res.status(404).json({error: 'Invalid work type'});
+         }
 
-        console.log("Menu item  fetched successfully ");
-        res.status(200).json(reqitem);
     } catch (error) {
         console.log(error);
-        res.status(500).json({ error: "Internal server errror" });
+        res.status(500).json({error: 'Internal server error'});
     }
 })
 
 
+
+app.post("/menuitem", async (req, res) => {
+  try {
+    const menudata = req.body;
+    const newmenu = new MenuItem(menudata); //take the name from above where assigned the value
+    const response = await newmenu.save();
+    console.log("Menu items added successfully ");
+    res.status(200).json(response);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "internal server error - Menu " });
+  }
+});
+
+app.get("/menuitem", async (req, res) => {
+  try {
+    const reqitem = await MenuItem.find();
+
+    console.log("Menu item  fetched successfully ");
+    res.status(200).json(reqitem);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal server errror" });
+  }
+});
 
 app.get("/", function (req, res) {
   res.send("welcome to the restaurant");
