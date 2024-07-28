@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
+const Person = require("./../Models/personSchema"); //models -schema
+
+
+
 // /POST route to addd the person data
 
 router.post("/", async (req, res) => {
@@ -24,7 +28,7 @@ router.post("/", async (req, res) => {
 });
 
 // GET Method to get the person data  from database
-Router.get("/", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
       const reqData = await Person.find();
       console.log("data fetched successfully ");
@@ -36,7 +40,7 @@ Router.get("/", async (req, res) => {
   });
 
   // Parameterized method of work 
-app.get('/:worktype', async(req,res)=>{
+router.get('/:worktype', async(req,res)=>{
     try {
         const worktype = req.params.worktype; //Extract the work type from the URL parameter
         if(worktype =='chef' || worktype =='manager' || worktype =='waiter'){
