@@ -53,6 +53,28 @@ app.get("/person", async (req, res) => {
 //     }
 //     })     This callback method is old and not good also not longer used , we'll use try,catchand block method
 
+app.post('/MenuItem',async(req,res) => {
+    try {
+        const menudata = req.body;
+        const newmenu = new menu(menudata);
+        const response = await newmenu.save();
+        console.log('Menu items added successfully ');
+        res.status(200).json(response);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({error:'internal server error - Menu '});
+    }
+});
+
+
+
+
+
+
+
+
+
+
 app.get("/", function (req, res) {
   res.send("welcome to the restaurant");
 });
