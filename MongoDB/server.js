@@ -32,15 +32,15 @@ app.post("/person", async (req, res) => {
 });
 
 // GET Method to get the person data  from database
-app.get("/person", async (req, res) => {
-  try {
-    const reqData = await Person.find();
-    console.log("data fetched successfully ");
-    res.status(200).json(reqData);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "Internal server errror" });
-  }
+            app.get("/person", async (req, res) => {
+            try {
+                const reqData = await Person.find();
+                console.log("data fetched successfully ");
+                res.status(200).json(reqData);
+            } catch (error) {
+                console.log(error);
+                res.status(500).json({ error: "Internal server errror" });
+            }
 });
 // Save the new person to the database
 // newPerson.save((error,savedPerson) =>{
@@ -53,10 +53,10 @@ app.get("/person", async (req, res) => {
 //     }
 //     })     This callback method is old and not good also not longer used , we'll use try,catchand block method
 
-app.post('/MenuItem',async(req,res) => {
+app.post('/menuitem',async(req,res) => {
     try {
         const menudata = req.body;
-        const newmenu = new menu(menudata);
+        const newmenu = new MenuItem(menudata);  //take the name from above where assigned the value
         const response = await newmenu.save();
         console.log('Menu items added successfully ');
         res.status(200).json(response);
@@ -66,12 +66,17 @@ app.post('/MenuItem',async(req,res) => {
     }
 });
 
+app.get('/menuitem', async(req,res) => {
+    try {
+        const reqitem = await MenuItem.find();
 
-
-
-
-
-
+        console.log("Menu item  fetched successfully ");
+        res.status(200).json(reqitem);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: "Internal server errror" });
+    }
+})
 
 
 
