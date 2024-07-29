@@ -26,5 +26,25 @@ router.post("/", async (req, res) => {
       res.status(500).json({ error: "Internal server errror" });
     }
   });
+
+
+//   Create a parameterized route for taste in menu db ??
+router.get("/:tastetype", async(req,res) => {
+    try {
+      const tastetype =req.params.tastetype;
+      if(tastetype =='sweet' || tastetype=='sour' || tastetype =='spicy'){
+          const response = await MenuItem.find({taste:tastetype});
+          console.log("Menuitem fetched");
+          res.status(200).json(response);
+
+      }else {
+        res.status(404).json({error: 'Invalid taste type'});
+
+      }
+    } catch (error) {
+      
+    }
+}) 
+
   
   module.exports  = router;
