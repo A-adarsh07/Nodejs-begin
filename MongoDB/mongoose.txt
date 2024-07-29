@@ -32,14 +32,21 @@ ex. {
 BodyParser is a middleware library for Express.js . It is used to parse and extract the body of incoming HTTP requests .
 when a client sends data to a server , it typically includes that data in the body of an HTTP request.
 
-BodyParser.json() automatically parses the json data from the request body and converts into a javascript object , which is then stored in the req.body
+*** BodyParser.json() automatically parses the json data from the request body and converts into a javascript object , which is then stored in the req.body
 express js uses this as middleware 
 
 
-After that use 'Models' for different databases , create GET/POST method 
+***After that use 'Models' for different databases , create GET/POST method 
 we have a lots of Endpoints in a single server.js file. 
 but we shouldn't use this method of creating GET/POST in Server.js file , it'll be difficult later, so we'll use Express-Routing method for END-POINTS 
 
-Express Router is a way to modularizze and organize your route handling code in an Express js Application. 
+***Express Router is a way to modularizze and organize your route handling code in an Express js Application. 
 
-also we'll import Models in Router files 
+***also we'll import Models in Router files 
+
+***CRUD operation in routing Endpoints 
+Update operation - PUT method  - 1) which record we want to update ?? 2) what exactly we want to update ??
+find the unique identifiers in a document in collection.
+first GET the data , then POST it 
+
+
