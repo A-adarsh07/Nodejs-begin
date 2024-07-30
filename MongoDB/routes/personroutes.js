@@ -45,7 +45,7 @@ router.get('/:worktype', async(req,res)=>{
         const worktype = req.params.worktype; //Extract the work type from the URL parameter
         if(worktype =='chef' || worktype =='manager' || worktype =='waiter'){
             const response = await Person.find({work:worktype});
-            console.log('resoponse fetched');
+            console.log('response fetched');
             res.status(200).json(response);
          } else {
             res.status(404).json({error: 'Invalid work type'});
@@ -57,6 +57,23 @@ router.get('/:worktype', async(req,res)=>{
     }
 })
 
-
+router.put('/:Person_id',async(req,res) => {
+  try {
+    const personId = req.params.Person_id;
+    const updatedpersondb= req.body;
+    const response = await Person.findByIdAndUpdate(personId, updatedpersondbb,{
+      new:true, //return the updated document
+      runValidators:true,
+    });
+    if(!updatedpersondb){
+      return res.status(404).json({error: 'Person not found'});
+    }
+     console.log('data updated');
+     res.status(200).json(response);
+  } catch (error){ 
+    console.log(error);
+    res.status(500).json({error: 'Internal server error'});
+  }
+})
 
 module.exports = router;
