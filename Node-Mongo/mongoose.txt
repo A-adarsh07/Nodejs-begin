@@ -50,3 +50,9 @@ find the unique identifiers in a document in collection.
 first GET the data , then POST it 
 
 
+Now we'll save our database online 
+use MongoDb Atlas free version - create a collection - click connect - paste the url in db.js and connect it  but this is not a good practice 
+so now we'll use "DOTENV"
+npm install dotenv 
+inside dotenv file - provide - Port ,DB_URL, 
+also in server.js = require('dotenv').config();

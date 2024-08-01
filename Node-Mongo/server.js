@@ -7,6 +7,7 @@ const bodyparser = require("body-parser");
 // It is used to parse and extract the body of incoming HTTP requests
 app.use(bodyparser.json());
 
+const PORT = process.env.PORT || 3000;
 
 
 // Import the router files 
@@ -20,6 +21,7 @@ app.use(bodyparser.json());
 app.get("/", function (req, res) {
   res.send("welcome to the restaurant");
 });
-app.listen(3000, () => {
+
+app.listen(PORT, () => {
   console.log("listening on port 3000");
 });
