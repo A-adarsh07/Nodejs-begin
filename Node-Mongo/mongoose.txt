@@ -56,3 +56,5 @@ so now we'll use "DOTENV"
 npm install dotenv 
 inside dotenv file - provide - Port ,DB_URL, 
 also in server.js = require('dotenv').config();
+
+now host your site in Render 
