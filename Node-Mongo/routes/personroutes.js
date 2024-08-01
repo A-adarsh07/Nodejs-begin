@@ -61,7 +61,7 @@ router.put('/:Person_id',async(req,res) => {
   try {
     const personId = req.params.Person_id;
     const updatedpersondb= req.body;
-    const response = await Person.findByIdAndUpdate(personId, updatedpersondbb,{
+    const response = await Person.findByIdAndUpdate(personId, updatedpersondb,{
       new:true, //return the updated document
       runValidators:true,
     });
@@ -88,7 +88,7 @@ router.delete('/:id',async(req,res) => {
     res.status(200).json({message:'Person Deleted successfully'});
   } catch (error) {
     console.log(error);
-    res.status(500).jso({error:'Internal server error'});
+    res.status(500).json({error:'Internal server error'});
   }
 })
 
