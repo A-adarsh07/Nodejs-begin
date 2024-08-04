@@ -79,4 +79,10 @@ remove logRequest from app.get and use as middleware
 app.use(logRequest);
  so we put logging in every Endpoints using middleware ***********
 
- 
+
+**********  AUTHENTICATION AND AUTHORIZATION ****
+Authentication - first we will authenticate the person or staff , or any user through -credentials like email , or username and password 
+Authorization - then we will authorize that person , what he can do and what he/she can see 
+
+SO we will use PASSPORT package for authentication \
+npm install passport passport-local
