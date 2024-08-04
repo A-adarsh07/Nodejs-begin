@@ -86,3 +86,8 @@ Authorization - then we will authorize that person , what he can do and what he/
 
 SO we will use PASSPORT package for authentication \
 npm install passport passport-local
+
+now const passport= require('passport');
+const localstrategy = require('passport-local).strategy;
+
+then , edit your personScheme Model for username and passport 
