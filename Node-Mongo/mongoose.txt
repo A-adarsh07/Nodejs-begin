@@ -59,7 +59,7 @@ also in server.js = require('dotenv').config();
 
 now host your site in Render 
 
-Middleware - Processs which happened between request and response
+ {******   Middleware - Processs which happened between request and response
 lets make a 'logging process' to check how many people hit the server
 put the below line in server.js , 
 const logRequest = (req,res,next)=> {
@@ -70,3 +70,13 @@ app.get('/',logRequest, (req,res)=>{
 })
 Make sure your MongoDB Atlas account is connected and open ,
 also if you want to work in local db , connect with MongoDB Compass and connect it 
+ }*************
+
+
+// Now if you want to implement it to whole collection or whole body then 
+
+remove logRequest from app.get and use as middleware 
+app.use(logRequest);
+ so we put logging in every Endpoints using middleware ***********
+
+ 

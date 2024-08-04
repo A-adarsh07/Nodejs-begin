@@ -12,19 +12,20 @@ const PORT = process.env.PORT || 3000;
 // Middleware Function
 const logRequest= (req,res,next)=> {
   console.log(`[${new Date().toLocaleString()}] Request Made to : ${req.originalUrl}`);
-  next();  //Move on to next phase
+  next();  //Move on to next phase i.e it'll now move to server to get data 
 }
 
+app.use(logRequest);
 
 // Import the router files 
         const personRoutes = require('./routes/personroutes');
 // Use the routers 
         app.use('/person',personRoutes); // deleted the person from router file and use here
 
-        const menuRoutes= require('./routes/menuroutes');
-        app.use('/menu',menuRoutes);
+    const menuRoutes= require('./routes/menuroutes');
+    app.use('/menu',menuRoutes);
 
-app.get("/",logRequest, function (req, res) {
+app.get("/", function (req, res) {
   res.send("welcome to the restaurant");
 });
 
