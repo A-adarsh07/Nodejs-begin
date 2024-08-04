@@ -9,6 +9,12 @@ app.use(bodyparser.json());
 
 const PORT = process.env.PORT || 3000;
 
+// Middleware Function
+const logRequest= (req,res,next)=> {
+  console.log(`[${new Date().toLocaleString()}] Request Made to : ${req.originalUrl}`);
+  next();  //Move on to next phase
+}
+
 
 // Import the router files 
         const personRoutes = require('./routes/personroutes');
@@ -18,7 +24,7 @@ const PORT = process.env.PORT || 3000;
         const menuRoutes= require('./routes/menuroutes');
         app.use('/menu',menuRoutes);
 
-app.get("/", function (req, res) {
+app.get("/",logRequest, function (req, res) {
   res.send("welcome to the restaurant");
 });
 

@@ -58,3 +58,15 @@ inside dotenv file - provide - Port ,DB_URL,
 also in server.js = require('dotenv').config();
 
 now host your site in Render 
+
+Middleware - Processs which happened between request and response
+lets make a 'logging process' to check how many people hit the server
+put the below line in server.js , 
+const logRequest = (req,res,next)=> {
+    console.log(`[${new Date().tolocalString()}] Request made to :${req.OriginalUrl}`)
+}
+app.get('/',logRequest, (req,res)=>{
+    console.log('WElcome to restaurant' );
+})
+Make sure your MongoDB Atlas account is connected and open ,
+also if you want to work in local db , connect with MongoDB Compass and connect it 
