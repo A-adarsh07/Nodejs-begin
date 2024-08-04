@@ -91,3 +91,10 @@ now const passport= require('passport');
 const localstrategy = require('passport-local).strategy;
 
 then , edit your personScheme Model for username and passport 
+ now  make passport.get() - function for authorization 
+and then put the middleware = passport.authenticate('local',{session:false}),(req,res) => {
+    res.send('Welcome to the hotel');
+}
+
+
+Now to maintain clean code and server.js  , we'll create a 'auth.js' file and will move all authentication process there 
