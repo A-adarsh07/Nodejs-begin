@@ -98,3 +98,4 @@ and then put the middleware = passport.authenticate('local',{session:false}),(re
 
 
 Now to maintain clean code and server.js  , we'll create a 'auth.js' file and will move all authentication process there 
+and then we'll write logic in server.js
