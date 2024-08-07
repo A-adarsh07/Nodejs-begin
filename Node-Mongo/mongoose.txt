@@ -98,4 +98,20 @@ and then put the middleware = passport.authenticate('local',{session:false}),(re
 
 
 Now to maintain clean code and server.js  , we'll create a 'auth.js' file and will move all authentication process there 
-and then we'll write logic in server.js
+and then we'll write logic in server.js for authentication for person.
+app.use(passport.initialize()); 
+const localAuthMiddleware = passport.authenticate("local", { session: false });
+
+app.use("/person", localAuthMiddleware, personRoutes);
+
+Now we'll secure the password -  using - bcrypt - npm i bcrypt
+So what we're doing is,   we are modifying the password(or Hashhing the password with the help of bcrypt) just before storing it in "Database".
+we'll implement it in PersonSchema using "personScheme.Pre" middleware function and write the hash and salt method and then compare the password
+
+How it works ?? 
+whenever the user try to login again and insert the password the (bcrypt.compare) function internally extracts the salts from the 'stored hashed password' 
+and uses it to hash the entered password for comparison.
+The compare function automatically extracts the salt from the storedHashedPassword and uses it to hash the entered password . it then compares the resulting hash with the stored hash. If they match, it indicates that the entered password is correct . 
+
+
+

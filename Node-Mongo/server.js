@@ -21,7 +21,9 @@ const logRequest = (req, res, next) => {
 };
 app.use(logRequest);
 
-app.use(passport.initialize()); //The code app.use(passport.initialize()); is used in an Express.js application to integrate Passport.js, a popular authentication middleware for Node.js.
+app.use(passport.initialize()); 
+//The code app.use(passport.initialize()); is used in an Express.js application to integrate Passport.js, a popular authentication middleware for Node.js.
+
 const localAuthMiddleware = passport.authenticate("local", { session: false });
 
 // Import the router files
