@@ -113,5 +113,16 @@ whenever the user try to login again and insert the password the (bcrypt.compare
 and uses it to hash the entered password for comparison.
 The compare function automatically extracts the salt from the storedHashedPassword and uses it to hash the entered password . it then compares the resulting hash with the stored hash. If they match, it indicates that the entered password is correct . 
 
+password compare code in personSchema models
+personSchema.methods.comparePassword= async function (candidatePassword){
+    try {
+        const isMatch= await bcrypt.compare(candidatePassword,this.password);
+        return isMatch;
+    } catch (error) {
+        throw error;
+    }
+}
 
+// create Person model 
+const person = mongoose.model('person',personSchema);
 

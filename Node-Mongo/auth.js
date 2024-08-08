@@ -4,8 +4,7 @@ const localStrategy = require("passport-local").Strategy; //used for username an
 const Person = require("./Models/personSchema");
 
 // username & password verification function
-passport.use(
-  new localStrategy(async (username, password, done) => {
+passport.use(new localStrategy(async (username, password, done) => {
     try {
       //  commented the console.log because it'll show the username and password of the users in the logs and it is a bad practice
       // console.log("Received credentials", username, password);

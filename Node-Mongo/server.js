@@ -14,9 +14,7 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware Function
 const logRequest = (req, res, next) => {
-  console.log(
-    `[${new Date().toLocaleString()}] Request Made to : ${req.originalUrl}`
-  );
+  console.log( `[${new Date().toLocaleString()}] Request Made to : ${req.originalUrl}` );
   next(); //Move on to next phase i.e it'll now move to server to get data
 };
 app.use(logRequest);
