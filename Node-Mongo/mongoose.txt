@@ -157,3 +157,12 @@ automatically sent to the server with every request. This storage option is ofte
 Session Storage : Session storage is similar to local storage but is scoped to particular browsing session . Data stored in session storage is cleared when 
 close the browser or tab. It's commonly used for temporary data storage or for maintaining a state within a single browsing session. 
 
+************ Token bases Authentication  ******
+
+A token is an authorization file that cannot be tampered with. It is genrerated by the server using a secret key, sent to and stored by the user in their local storage. Like in the case of cookies , the user sends this token to the server with every new request , so that the server can verify its signature and authorize the requests.
+
+Client -------username && Password -------->>>>> [SERVER]  {validate Login and create new JWT token }
+Next time : 
+Client --------Request with JWT header ------>>>>>> [SERVER] {validate JWT token}     //this time server will only validate or check the token and give response
+
+
