@@ -126,3 +126,34 @@ personSchema.methods.comparePassword= async function (candidatePassword){
 // create Person model 
 const person = mongoose.model('person',personSchema);
 
+
+Day -9  Cookies and Tokens 
+**** Sessions - Sessions are a way to maintain user state and authenticate users in web applications.
+A session is a way or a small file, most likely in JSON format , that stores information about the user, such as a unique ID, time of login expirations, and 
+so on. It is generated and stored on the server so that the server can keep track of the user requests. 
+
+The server authenticates the login request , sends a session to the database , and returns a cookie containing the session ID to the user . 
+
+Client  ---> server ----->JSON file----> database 
+In response database sends a cookie which contains session ID ..
+so the next time when client or user sends a new request ,the server looks up in the database for the ID found in the cookie, if found , it sends the requested pages
+
+*** Cookies - A cookie is a small piece of data that a website stores on a user's computer or device. 
+when you revisit the website or navigate to different pages on the same  site , your browser automatically includes the cookie in the HTTP requests it sends to the 
+website's server.
+
+Types of cookies : 
+1) Session Cookies : these cookies are temporary and are deleted when you close your browser. They are often used for maintaining your login state during a browsing session.
+2 ) Persistent Cookies : These cookies are stored on your device for a specified duration, even after you close your browser. They can be used for purposes such as
+remembring your preferences or login information across multiple visits to a website. 
+
+
+Cookies storage : Cookies received from the server are typically stored in the "Cookies" storage of your browser. These cookies can include session cookies,
+which are deleted when you close your browser, and persistent cookies, which are stored for a longer period.
+
+Local Storage : Local storage is a mechanism that allows web application to store data locally in the browser. Unlike cookies, data stored in local storage is not 
+automatically sent to the server with every request. This storage option is often used for caching data, storing user preferences, or implementing client-side features.
+
+Session Storage : Session storage is similar to local storage but is scoped to particular browsing session . Data stored in session storage is cleared when 
+close the browser or tab. It's commonly used for temporary data storage or for maintaining a state within a single browsing session. 
+
