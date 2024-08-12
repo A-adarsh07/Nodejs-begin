@@ -166,3 +166,13 @@ Next time :
 Client --------Request with JWT header ------>>>>>> [SERVER] {validate JWT token}     //this time server will only validate or check the token and give response
 
 
+********* JWT Authentication ******
+JWT(JSON Web Token ) it is a compact and self-contained means of transmitting information between parties as a JSON object.
+- JWT consist of three parts : Header, Payload and Signature .
+JWTs are commonly used for authentication and authorization in web applications and APIs. They can store user claims such as user ID, roles , permissions 
+and custom data , in a  secure and portable format. 
+JWTs are stateless, meaning the server does not need to store session information. This makes them suitable for distrubuted architectures and scalable systems. 
+
+header means which cryptographic algorithm we are going to use to secure. Typ(Type) - specifies the type of token, usually set to "JWT" . Alg(algorithm) -indicates
+cryptographic algorithm such as SHA256, RSA .
+Payload : 
