@@ -175,4 +175,17 @@ JWTs are stateless, meaning the server does not need to store session informatio
 
 header means which cryptographic algorithm we are going to use to secure. Typ(Type) - specifies the type of token, usually set to "JWT" . Alg(algorithm) -indicates
 cryptographic algorithm such as SHA256, RSA .
-Payload : 
+Payload : Contains the claims or statement about the subject and any additional dara.
+Signature: Verifies the integrity of the token and ensures that it has not been tampered with during transmission.
+
+User -----> username and password(signup) --->>> Auth server will generate the JWT
+user <<<<<<<<<<<------ Authentication server returns JWT 
+user again request GET/protected source   ---->>> Bearer <JWT> -------->> server verifies the JWT & gives access to protected data .
+
+
+JWT Functions
+Jwt.sign() - this function is used to generate a new JWT token based on the provided payload and options. 
+it takes three parameters :  payload , secretOrPrivateKey 
+
+jwt.verify(): token , secretkey 
+
