@@ -45,3 +45,6 @@ db.users.updateOne({username:'charlie'}, {$set: {id :3} });
 db.users.deleteOne({id:2});
 db.users.updateOne({username:'charlie'},{$set:{job:'cloud engineer'}})
 
+db.books.find({"reviews.name":"luigi"}); it'll show all the reviews by luigi 
+db.books.updateOne({title:"The Light fantastic"},{$set:{rating:8}}) 
+
