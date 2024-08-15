@@ -194,3 +194,11 @@ install JWT - npm install jsonwebtoken
 create  a JWT auth middleware function, which is responsible for authentication via Tokens.
 write a middleware function for jwt verification
 write another function to generate jwt token 
+
+Now to put expiry in tokens then we'll modify the personRoutes 
+router.post('/login',async (req,res)) => {
+    // extract the username and password from request body 
+}
+also modify the jwt.js file in generatetoken  function 
+return jwt.sign(userdata,process.env.JWT_SECRET,{expiresIn:30}); here 30 means 30 seconds
+

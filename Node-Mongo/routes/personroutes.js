@@ -34,8 +34,52 @@ router.post("/signup", async (req, res) => {
   }
 });
 
+//Login Route 
+router.post("/login",async(req,res) => {
+  try {
+        //Extract username and password from request body 
+        const {username,password} =req.body;
+
+        //find the user by username 
+        const user = await Person.findOne({username:username});
+
+        //If user does not exist or password does not match , return error
+        if( !user || !(await user.comparePassword(password))){
+           return res.status(401).json({error: 'Invalid username or password'});
+        }
+
+        //generate token 
+        const payload = {
+          id:user.id,
+          username:user.username
+        }
+        const token= generateToken(payload);
+        //return token as response 
+        res.json({token})
+  } catch (error) {
+     console.log(error);
+      res.status(500).json({error:"Internal server error "});
+  }
+})
+
+router.get('/profile',jwtmiddleware,async(req,res) => {
+  try {
+    //Extract user id from decoded token 
+    const userData = req.user;
+    console.log(userData);
+    const userId= userData.id;
+    const user= await Person.findById(userId);
+    res.status(200).json({user});
+    
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({error: "Internal server error"});
+  }
+})
+
+
 // GET Method to get the person data  from database
-router.get("/", async (req, res) => {
+router.get("/",jwtmiddleware, async (req, res) => {
     try {
       const reqData = await Person.find();
       console.log("data fetched successfully ");
