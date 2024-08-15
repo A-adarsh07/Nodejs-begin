@@ -1,13 +1,12 @@
 const express = require('express');
 const router = express.Router();
-
 const Person = require("../Models/personSchema"); //models -schema
-
+const { jwtmiddleware,generateToken } = require('./../jwt');
 
 
 // /POST route to addd the person data
 
-router.post("/", async (req, res) => {
+router.post("/signup", async (req, res) => {
   try {
     const data = req.body; //   data is processing through body parser and store inside req.body
 
@@ -20,7 +19,15 @@ router.post("/", async (req, res) => {
     // save the new person to the database
     const response = await newPerson.save();
     console.log("data saved");
-    res.status(200).json(response);
+    const payload = {
+      id:response.id,
+      username:response.username
+    }
+    const token = generateToken(payload);
+    console.log("Token is ", token);
+
+    res.status(200).json({response:response,token:token});
+
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Internal server errror" });

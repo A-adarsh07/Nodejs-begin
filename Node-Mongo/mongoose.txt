@@ -192,3 +192,5 @@ jwt.verify(): token , secretkey
 install JWT - npm install jsonwebtoken 
 
 create  a JWT auth middleware function, which is responsible for authentication via Tokens.
+write a middleware function for jwt verification
+write another function to generate jwt token 

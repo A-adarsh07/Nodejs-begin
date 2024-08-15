@@ -8,7 +8,7 @@ const jwtmiddleware= (req,res,next) => {
 
     try {
         //verify the JWT Token
-       const decoded =  jwt.verify(token,process.env.JWT_SECRET);
+       const decoded = jwt.verify(token,process.env.JWT_SECRET);
 
         //Attach user information to the request object 
         req.userPayload= decoded;
@@ -19,4 +19,11 @@ const jwtmiddleware= (req,res,next) => {
     }
 
 }
-module.exports= jwtmiddleware;
+
+//Function to generate JWT Token
+const generateToken= (userdata)=> {
+    //generate a new JWT token using user data
+    return jwt.sign(userdata,process.env.JWT_SECRET);
+}
+
+module.exports={ jwtmiddleware,generateToken };
