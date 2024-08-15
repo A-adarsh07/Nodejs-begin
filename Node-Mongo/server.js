@@ -27,7 +27,8 @@ const localAuthMiddleware = passport.authenticate("local", { session: false });
 // Import the router files
 const personRoutes = require("./routes/personroutes");
 // Use the routers
-app.use("/person", localAuthMiddleware, personRoutes); // deleted the person from router file and use here , used Local authentication for person
+//app.use("/person", localAuthMiddleware, personRoutes); // deleted the person from router file and use here , used Local authentication for person
+app.use("/person",personRoutes);
 
 const menuRoutes = require("./routes/menuroutes");
 app.use("/menu", menuRoutes);

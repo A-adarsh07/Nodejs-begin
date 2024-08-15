@@ -189,3 +189,6 @@ it takes three parameters :  payload , secretOrPrivateKey
 
 jwt.verify(): token , secretkey 
 
+install JWT - npm install jsonwebtoken 
+
+create  a JWT auth middleware function, which is responsible for authentication via Tokens.
